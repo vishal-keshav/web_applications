@@ -55,7 +55,6 @@ class Executer(Resource):
         req_parser = reqparse.RequestParser()
         req_parser.add_argument("func", type=str, help="Function to execute")
         args = req_parser.parse_args()
-        print(args.func)
         results = {'out': exec_with_return(args.func)}
         return results
 
@@ -64,4 +63,4 @@ api.add_resource(BatteryStatus, "/battery")
 api.add_resource(Executer, "/executer")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
